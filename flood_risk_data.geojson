@@ -6,6 +6,7 @@
       "properties": {
         "district_name": "Mumbai",
         "state": "Maharashtra",
+        "taluka": "Mumbai City",
         "risk_level": "High",
         "elevation": 14,
         "rainfall": 2400,
@@ -19,211 +20,33 @@
     {
       "type": "Feature",
       "properties": {
-        "district_name": "Patna",
-        "state": "Bihar",
+        "district_name": "Thane",
+        "state": "Maharashtra",
+        "taluka": "Thane",
         "risk_level": "High",
-        "elevation": 53,
-        "rainfall": 1100,
-        "population": "2.0M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[84.9, 25.4], [85.4, 25.4], [85.4, 25.8], [84.9, 25.8], [84.9, 25.4]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Kolkata",
-        "state": "West Bengal",
-        "risk_level": "High",
-        "elevation": 9,
-        "rainfall": 1600,
-        "population": "14.8M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[88.2, 22.4], [88.6, 22.4], [88.6, 22.8], [88.2, 22.8], [88.2, 22.4]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Guwahati",
-        "state": "Assam",
-        "risk_level": "High",
-        "elevation": 54,
-        "rainfall": 2800,
-        "population": "1.1M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[91.5, 26.0], [91.9, 26.0], [91.9, 26.4], [91.5, 26.4], [91.5, 26.0]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Darbhanga",
-        "state": "Bihar",
-        "risk_level": "High",
-        "elevation": 52,
-        "rainfall": 1200,
-        "population": "1.2M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[85.8, 25.9], [86.2, 25.9], [86.2, 26.3], [85.8, 26.3], [85.8, 25.9]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Muzaffarpur",
-        "state": "Bihar",
-        "risk_level": "High",
-        "elevation": 60,
-        "rainfall": 1150,
-        "population": "1.4M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[85.2, 26.0], [85.6, 26.0], [85.6, 26.4], [85.2, 26.4], [85.2, 26.0]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Chennai",
-        "state": "Tamil Nadu",
-        "risk_level": "Medium",
         "elevation": 7,
-        "rainfall": 1400,
-        "population": "7.1M"
+        "rainfall": 2200,
+        "population": "1.8M"
       },
       "geometry": {
         "type": "Polygon",
-        "coordinates": [[[80.0, 12.8], [80.4, 12.8], [80.4, 13.2], [80.0, 13.2], [80.0, 12.8]]]
+        "coordinates": [[[73.0, 19.0], [73.3, 19.0], [73.3, 19.4], [73.0, 19.4], [73.0, 19.0]]]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "district_name": "Bhubaneswar",
-        "state": "Odisha",
+        "district_name": "Raigad",
+        "state": "Maharashtra",
+        "taluka": "Panvel",
         "risk_level": "Medium",
-        "elevation": 45,
-        "rainfall": 1500,
-        "population": "0.9M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[85.6, 20.1], [86.0, 20.1], [86.0, 20.5], [85.6, 20.5], [85.6, 20.1]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Kochi",
-        "state": "Kerala",
-        "risk_level": "Medium",
-        "elevation": 3,
+        "elevation": 18,
         "rainfall": 3000,
-        "population": "2.1M"
+        "population": "0.3M"
       },
       "geometry": {
         "type": "Polygon",
-        "coordinates": [[[76.1, 9.8], [76.5, 9.8], [76.5, 10.2], [76.1, 10.2], [76.1, 9.8]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Lucknow",
-        "state": "Uttar Pradesh",
-        "risk_level": "Medium",
-        "elevation": 123,
-        "rainfall": 1000,
-        "population": "2.8M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[80.7, 26.6], [81.1, 26.6], [81.1, 27.0], [80.7, 27.0], [80.7, 26.6]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Varanasi",
-        "state": "Uttar Pradesh",
-        "risk_level": "Medium",
-        "elevation": 81,
-        "rainfall": 1050,
-        "population": "1.2M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[82.8, 25.1], [83.2, 25.1], [83.2, 25.5], [82.8, 25.5], [82.8, 25.1]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Allahabad",
-        "state": "Uttar Pradesh",
-        "risk_level": "Medium",
-        "elevation": 98,
-        "rainfall": 1027,
-        "population": "1.5M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[81.6, 25.2], [82.0, 25.2], [82.0, 25.6], [81.6, 25.6], [81.6, 25.2]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Surat",
-        "state": "Gujarat",
-        "risk_level": "Medium",
-        "elevation": 13,
-        "rainfall": 1200,
-        "population": "4.5M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[72.6, 21.0], [73.0, 21.0], [73.0, 21.4], [72.6, 21.4], [72.6, 21.0]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Bangalore",
-        "state": "Karnataka",
-        "risk_level": "Low",
-        "elevation": 920,
-        "rainfall": 970,
-        "population": "8.4M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[77.4, 12.7], [77.8, 12.7], [77.8, 13.1], [77.4, 13.1], [77.4, 12.7]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Jaipur",
-        "state": "Rajasthan",
-        "risk_level": "Low",
-        "elevation": 431,
-        "rainfall": 650,
-        "population": "3.1M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[75.5, 26.7], [76.0, 26.7], [76.0, 27.1], [75.5, 27.1], [75.5, 26.7]]]
+        "coordinates": [[[73.0, 18.5], [73.3, 18.5], [73.3, 18.9], [73.0, 18.9], [73.0, 18.5]]]
       }
     },
     {
@@ -231,6 +54,7 @@
       "properties": {
         "district_name": "Pune",
         "state": "Maharashtra",
+        "taluka": "Pune City",
         "risk_level": "Low",
         "elevation": 560,
         "rainfall": 722,
@@ -244,53 +68,9 @@
     {
       "type": "Feature",
       "properties": {
-        "district_name": "Hyderabad",
-        "state": "Telangana",
-        "risk_level": "Low",
-        "elevation": 505,
-        "rainfall": 812,
-        "population": "6.9M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[78.2, 17.2], [78.6, 17.2], [78.6, 17.6], [78.2, 17.6], [78.2, 17.2]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Delhi",
-        "state": "Delhi",
-        "risk_level": "Medium",
-        "elevation": 216,
-        "rainfall": 797,
-        "population": "16.8M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[77.0, 28.4], [77.4, 28.4], [77.4, 28.8], [77.0, 28.8], [77.0, 28.4]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Ahmedabad",
-        "state": "Gujarat",
-        "risk_level": "Low",
-        "elevation": 53,
-        "rainfall": 803,
-        "population": "5.6M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[72.4, 22.9], [72.8, 22.9], [72.8, 23.3], [72.4, 23.3], [72.4, 22.9]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "district_name": "Nagpur",
         "state": "Maharashtra",
+        "taluka": "Nagpur",
         "risk_level": "Low",
         "elevation": 310,
         "rainfall": 1205,
@@ -304,121 +84,113 @@
     {
       "type": "Feature",
       "properties": {
-        "district_name": "Siliguri",
-        "state": "West Bengal",
+        "district_name": "Nashik",
+        "state": "Maharashtra",
+        "taluka": "Nashik",
         "risk_level": "Medium",
-        "elevation": 122,
-        "rainfall": 3200,
-        "population": "0.7M"
+        "elevation": 565,
+        "rainfall": 603,
+        "population": "1.5M"
       },
       "geometry": {
         "type": "Polygon",
-        "coordinates": [[[88.3, 26.5], [88.7, 26.5], [88.7, 26.9], [88.3, 26.9], [88.3, 26.5]]]
+        "coordinates": [[[73.6, 19.8], [74.0, 19.8], [74.0, 20.2], [73.6, 20.2], [73.6, 19.8]]]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "district_name": "Imphal",
-        "state": "Manipur",
+        "district_name": "Aurangabad",
+        "state": "Maharashtra",
+        "taluka": "Aurangabad",
+        "risk_level": "Low",
+        "elevation": 568,
+        "rainfall": 726,
+        "population": "1.2M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[75.1, 19.7], [75.5, 19.7], [75.5, 20.1], [75.1, 20.1], [75.1, 19.7]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Solapur",
+        "state": "Maharashtra",
+        "taluka": "Solapur",
+        "risk_level": "Low",
+        "elevation": 458,
+        "rainfall": 545,
+        "population": "0.9M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[75.7, 17.5], [76.1, 17.5], [76.1, 17.9], [75.7, 17.9], [75.7, 17.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Kolhapur",
+        "state": "Maharashtra",
+        "taluka": "Kolhapur",
         "risk_level": "Medium",
-        "elevation": 786,
-        "rainfall": 1467,
-        "population": "0.3M"
+        "elevation": 569,
+        "rainfall": 1016,
+        "population": "0.5M"
       },
       "geometry": {
         "type": "Polygon",
-        "coordinates": [[[93.7, 24.6], [94.1, 24.6], [94.1, 25.0], [93.7, 25.0], [93.7, 24.6]]]
+        "coordinates": [[[74.0, 16.5], [74.4, 16.5], [74.4, 16.9], [74.0, 16.9], [74.0, 16.5]]]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "district_name": "Jorhat",
-        "state": "Assam",
+        "district_name": "Patna",
+        "state": "Bihar",
+        "taluka": "Patna Sadar",
         "risk_level": "High",
-        "elevation": 116,
-        "rainfall": 2300,
-        "population": "0.2M"
+        "elevation": 53,
+        "rainfall": 1100,
+        "population": "2.0M"
       },
       "geometry": {
         "type": "Polygon",
-        "coordinates": [[[94.1, 26.5], [94.5, 26.5], [94.5, 26.9], [94.1, 26.9], [94.1, 26.5]]]
+        "coordinates": [[[84.9, 25.4], [85.4, 25.4], [85.4, 25.8], [84.9, 25.8], [84.9, 25.4]]]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "district_name": "Dibrugarh",
-        "state": "Assam",
+        "district_name": "Muzaffarpur",
+        "state": "Bihar",
+        "taluka": "Muzaffarpur",
         "risk_level": "High",
-        "elevation": 110,
-        "rainfall": 2818,
-        "population": "0.2M"
+        "elevation": 60,
+        "rainfall": 1150,
+        "population": "1.4M"
       },
       "geometry": {
         "type": "Polygon",
-        "coordinates": [[[94.8, 27.3], [95.2, 27.3], [95.2, 27.7], [94.8, 27.7], [94.8, 27.3]]]
+        "coordinates": [[[85.2, 26.0], [85.6, 26.0], [85.6, 26.4], [85.2, 26.4], [85.2, 26.0]]]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "district_name": "Thrissur",
-        "state": "Kerala",
-        "risk_level": "Medium",
-        "elevation": 29,
-        "rainfall": 3055,
-        "population": "0.3M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[76.0, 10.3], [76.4, 10.3], [76.4, 10.7], [76.0, 10.7], [76.0, 10.3]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Kozhikode",
-        "state": "Kerala",
-        "risk_level": "Medium",
-        "elevation": 2,
-        "rainfall": 3266,
-        "population": "0.4M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[75.6, 11.1], [76.0, 11.1], [76.0, 11.5], [75.6, 11.5], [75.6, 11.1]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Puri",
-        "state": "Odisha",
+        "district_name": "Darbhanga",
+        "state": "Bihar",
+        "taluka": "Darbhanga",
         "risk_level": "High",
-        "elevation": 3,
-        "rainfall": 1483,
-        "population": "0.2M"
+        "elevation": 52,
+        "rainfall": 1200,
+        "population": "1.2M"
       },
       "geometry": {
         "type": "Polygon",
-        "coordinates": [[[85.7, 19.6], [86.1, 19.6], [86.1, 20.0], [85.7, 20.0], [85.7, 19.6]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "district_name": "Cuttack",
-        "state": "Odisha",
-        "risk_level": "High",
-        "elevation": 36,
-        "rainfall": 1520,
-        "population": "0.6M"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[85.7, 20.3], [86.1, 20.3], [86.1, 20.7], [85.7, 20.7], [85.7, 20.3]]]
+        "coordinates": [[[85.8, 25.9], [86.2, 25.9], [86.2, 26.3], [85.8, 26.3], [85.8, 25.9]]]
       }
     },
     {
@@ -426,6 +198,7 @@
       "properties": {
         "district_name": "Gaya",
         "state": "Bihar",
+        "taluka": "Gaya",
         "risk_level": "Medium",
         "elevation": 111,
         "rainfall": 1050,
@@ -441,6 +214,7 @@
       "properties": {
         "district_name": "Bhagalpur",
         "state": "Bihar",
+        "taluka": "Bhagalpur",
         "risk_level": "High",
         "elevation": 44,
         "rainfall": 1100,
@@ -454,8 +228,761 @@
     {
       "type": "Feature",
       "properties": {
+        "district_name": "Kolkata",
+        "state": "West Bengal",
+        "taluka": "Kolkata",
+        "risk_level": "High",
+        "elevation": 9,
+        "rainfall": 1600,
+        "population": "14.8M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[88.2, 22.4], [88.6, 22.4], [88.6, 22.8], [88.2, 22.8], [88.2, 22.4]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Howrah",
+        "state": "West Bengal",
+        "taluka": "Howrah",
+        "risk_level": "High",
+        "elevation": 11,
+        "rainfall": 1580,
+        "population": "1.1M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[88.0, 22.5], [88.4, 22.5], [88.4, 22.9], [88.0, 22.9], [88.0, 22.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "North 24 Parganas",
+        "state": "West Bengal",
+        "taluka": "Barasat",
+        "risk_level": "High",
+        "elevation": 6,
+        "rainfall": 1650,
+        "population": "1.0M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[88.5, 22.6], [88.9, 22.6], [88.9, 23.0], [88.5, 23.0], [88.5, 22.6]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Siliguri",
+        "state": "West Bengal",
+        "taluka": "Siliguri",
+        "risk_level": "Medium",
+        "elevation": 122,
+        "rainfall": 3200,
+        "population": "0.7M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[88.3, 26.5], [88.7, 26.5], [88.7, 26.9], [88.3, 26.9], [88.3, 26.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Guwahati",
+        "state": "Assam",
+        "taluka": "Guwahati",
+        "risk_level": "High",
+        "elevation": 54,
+        "rainfall": 2800,
+        "population": "1.1M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[91.5, 26.0], [91.9, 26.0], [91.9, 26.4], [91.5, 26.4], [91.5, 26.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Jorhat",
+        "state": "Assam",
+        "taluka": "Jorhat",
+        "risk_level": "High",
+        "elevation": 116,
+        "rainfall": 2300,
+        "population": "0.2M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[94.1, 26.5], [94.5, 26.5], [94.5, 26.9], [94.1, 26.9], [94.1, 26.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Dibrugarh",
+        "state": "Assam",
+        "taluka": "Dibrugarh",
+        "risk_level": "High",
+        "elevation": 110,
+        "rainfall": 2818,
+        "population": "0.2M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[94.8, 27.3], [95.2, 27.3], [95.2, 27.7], [94.8, 27.7], [94.8, 27.3]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Silchar",
+        "state": "Assam",
+        "taluka": "Silchar",
+        "risk_level": "Medium",
+        "elevation": 22,
+        "rainfall": 2620,
+        "population": "0.2M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[92.6, 24.6], [93.0, 24.6], [93.0, 25.0], [92.6, 25.0], [92.6, 24.6]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Chennai",
+        "state": "Tamil Nadu",
+        "taluka": "Chennai",
+        "risk_level": "Medium",
+        "elevation": 7,
+        "rainfall": 1400,
+        "population": "7.1M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[80.0, 12.8], [80.4, 12.8], [80.4, 13.2], [80.0, 13.2], [80.0, 12.8]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Coimbatore",
+        "state": "Tamil Nadu",
+        "taluka": "Coimbatore",
+        "risk_level": "Low",
+        "elevation": 411,
+        "rainfall": 696,
+        "population": "1.0M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.8, 10.8], [77.2, 10.8], [77.2, 11.2], [76.8, 11.2], [76.8, 10.8]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Madurai",
+        "state": "Tamil Nadu",
+        "taluka": "Madurai",
+        "risk_level": "Low",
+        "elevation": 101,
+        "rainfall": 852,
+        "population": "1.0M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[78.0, 9.7], [78.4, 9.7], [78.4, 10.1], [78.0, 10.1], [78.0, 9.7]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Tiruchirappalli",
+        "state": "Tamil Nadu",
+        "taluka": "Trichy",
+        "risk_level": "Medium",
+        "elevation": 88,
+        "rainfall": 835,
+        "population": "0.8M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[78.5, 10.6], [78.9, 10.6], [78.9, 11.0], [78.5, 11.0], [78.5, 10.6]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Salem",
+        "state": "Tamil Nadu",
+        "taluka": "Salem",
+        "risk_level": "Low",
+        "elevation": 278,
+        "rainfall": 812,
+        "population": "0.8M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[78.0, 11.5], [78.4, 11.5], [78.4, 11.9], [78.0, 11.9], [78.0, 11.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Bangalore",
+        "state": "Karnataka",
+        "taluka": "Bangalore Urban",
+        "risk_level": "Low",
+        "elevation": 920,
+        "rainfall": 970,
+        "population": "8.4M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[77.4, 12.7], [77.8, 12.7], [77.8, 13.1], [77.4, 13.1], [77.4, 12.7]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Mysore",
+        "state": "Karnataka",
+        "taluka": "Mysore",
+        "risk_level": "Low",
+        "elevation": 770,
+        "rainfall": 785,
+        "population": "0.9M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.4, 12.1], [76.8, 12.1], [76.8, 12.5], [76.4, 12.5], [76.4, 12.1]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Hubli",
+        "state": "Karnataka",
+        "taluka": "Hubli-Dharwad",
+        "risk_level": "Low",
+        "elevation": 640,
+        "rainfall": 838,
+        "population": "0.9M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[75.0, 15.2], [75.4, 15.2], [75.4, 15.6], [75.0, 15.6], [75.0, 15.2]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Mangalore",
+        "state": "Karnataka",
+        "taluka": "Mangalore",
+        "risk_level": "Medium",
+        "elevation": 22,
+        "rainfall": 3800,
+        "population": "0.5M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[74.6, 12.7], [75.0, 12.7], [75.0, 13.1], [74.6, 13.1], [74.6, 12.7]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Thiruvananthapuram",
+        "state": "Kerala",
+        "taluka": "Trivandrum",
+        "risk_level": "Medium",
+        "elevation": 16,
+        "rainfall": 1835,
+        "population": "0.7M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.8, 8.3], [77.2, 8.3], [77.2, 8.7], [76.8, 8.7], [76.8, 8.3]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Kochi",
+        "state": "Kerala",
+        "taluka": "Kochi",
+        "risk_level": "Medium",
+        "elevation": 3,
+        "rainfall": 3000,
+        "population": "2.1M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.1, 9.8], [76.5, 9.8], [76.5, 10.2], [76.1, 10.2], [76.1, 9.8]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Kozhikode",
+        "state": "Kerala",
+        "taluka": "Calicut",
+        "risk_level": "Medium",
+        "elevation": 2,
+        "rainfall": 3266,
+        "population": "0.4M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[75.6, 11.1], [76.0, 11.1], [76.0, 11.5], [75.6, 11.5], [75.6, 11.1]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Thrissur",
+        "state": "Kerala",
+        "taluka": "Thrissur",
+        "risk_level": "Medium",
+        "elevation": 29,
+        "rainfall": 3055,
+        "population": "0.3M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.0, 10.3], [76.4, 10.3], [76.4, 10.7], [76.0, 10.7], [76.0, 10.3]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Hyderabad",
+        "state": "Telangana",
+        "taluka": "Hyderabad",
+        "risk_level": "Low",
+        "elevation": 505,
+        "rainfall": 812,
+        "population": "6.9M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[78.2, 17.2], [78.6, 17.2], [78.6, 17.6], [78.2, 17.6], [78.2, 17.2]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Warangal",
+        "state": "Telangana",
+        "taluka": "Warangal",
+        "risk_level": "Low",
+        "elevation": 302,
+        "rainfall": 980,
+        "population": "0.8M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[79.4, 17.8], [79.8, 17.8], [79.8, 18.2], [79.4, 18.2], [79.4, 17.8]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Visakhapatnam",
+        "state": "Andhra Pradesh",
+        "taluka": "Vizag",
+        "risk_level": "Medium",
+        "elevation": 45,
+        "rainfall": 1047,
+        "population": "1.7M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[83.1, 17.5], [83.5, 17.5], [83.5, 17.9], [83.1, 17.9], [83.1, 17.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Vijayawada",
+        "state": "Andhra Pradesh",
+        "taluka": "Vijayawada",
+        "risk_level": "Medium",
+        "elevation": 11,
+        "rainfall": 1036,
+        "population": "1.0M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[80.4, 16.3], [80.8, 16.3], [80.8, 16.7], [80.4, 16.7], [80.4, 16.3]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Guntur",
+        "state": "Andhra Pradesh",
+        "taluka": "Guntur",
+        "risk_level": "Medium",
+        "elevation": 33,
+        "rainfall": 831,
+        "population": "0.7M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[80.3, 16.1], [80.7, 16.1], [80.7, 16.5], [80.3, 16.5], [80.3, 16.1]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Bhubaneswar",
+        "state": "Odisha",
+        "taluka": "Bhubaneswar",
+        "risk_level": "Medium",
+        "elevation": 45,
+        "rainfall": 1500,
+        "population": "0.9M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[85.6, 20.1], [86.0, 20.1], [86.0, 20.5], [85.6, 20.5], [85.6, 20.1]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Cuttack",
+        "state": "Odisha",
+        "taluka": "Cuttack",
+        "risk_level": "High",
+        "elevation": 36,
+        "rainfall": 1520,
+        "population": "0.6M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[85.7, 20.3], [86.1, 20.3], [86.1, 20.7], [85.7, 20.7], [85.7, 20.3]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Puri",
+        "state": "Odisha",
+        "taluka": "Puri",
+        "risk_level": "High",
+        "elevation": 3,
+        "rainfall": 1483,
+        "population": "0.2M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[85.7, 19.6], [86.1, 19.6], [86.1, 20.0], [85.7, 20.0], [85.7, 19.6]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Rourkela",
+        "state": "Odisha",
+        "taluka": "Rourkela",
+        "risk_level": "Low",
+        "elevation": 219,
+        "rainfall": 1560,
+        "population": "0.5M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[84.7, 22.1], [85.1, 22.1], [85.1, 22.5], [84.7, 22.5], [84.7, 22.1]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Jaipur",
+        "state": "Rajasthan",
+        "taluka": "Jaipur",
+        "risk_level": "Low",
+        "elevation": 431,
+        "rainfall": 650,
+        "population": "3.1M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[75.5, 26.7], [76.0, 26.7], [76.0, 27.1], [75.5, 27.1], [75.5, 26.7]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Jodhpur",
+        "state": "Rajasthan",
+        "taluka": "Jodhpur",
+        "risk_level": "Low",
+        "elevation": 231,
+        "rainfall": 362,
+        "population": "1.0M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[72.8, 26.1], [73.2, 26.1], [73.2, 26.5], [72.8, 26.5], [72.8, 26.1]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Udaipur",
+        "state": "Rajasthan",
+        "taluka": "Udaipur",
+        "risk_level": "Low",
+        "elevation": 598,
+        "rainfall": 645,
+        "population": "0.5M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[73.5, 24.4], [73.9, 24.4], [73.9, 24.8], [73.5, 24.8], [73.5, 24.4]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Kota",
+        "state": "Rajasthan",
+        "taluka": "Kota",
+        "risk_level": "Low",
+        "elevation": 271,
+        "rainfall": 660,
+        "population": "1.0M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[75.6, 25.0], [76.0, 25.0], [76.0, 25.4], [75.6, 25.4], [75.6, 25.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Ahmedabad",
+        "state": "Gujarat",
+        "taluka": "Ahmedabad",
+        "risk_level": "Low",
+        "elevation": 53,
+        "rainfall": 803,
+        "population": "5.6M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[72.4, 22.9], [72.8, 22.9], [72.8, 23.3], [72.4, 23.3], [72.4, 22.9]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Surat",
+        "state": "Gujarat",
+        "taluka": "Surat",
+        "risk_level": "Medium",
+        "elevation": 13,
+        "rainfall": 1200,
+        "population": "4.5M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[72.6, 21.0], [73.0, 21.0], [73.0, 21.4], [72.6, 21.4], [72.6, 21.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Vadodara",
+        "state": "Gujarat",
+        "taluka": "Vadodara",
+        "risk_level": "Low",
+        "elevation": 39,
+        "rainfall": 932,
+        "population": "1.7M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[73.0, 22.1], [73.4, 22.1], [73.4, 22.5], [73.0, 22.5], [73.0, 22.1]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Rajkot",
+        "state": "Gujarat",
+        "taluka": "Rajkot",
+        "risk_level": "Low",
+        "elevation": 128,
+        "rainfall": 625,
+        "population": "1.3M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[70.6, 22.1], [71.0, 22.1], [71.0, 22.5], [70.6, 22.5], [70.6, 22.1]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Delhi",
+        "state": "Delhi",
+        "taluka": "New Delhi",
+        "risk_level": "Medium",
+        "elevation": 216,
+        "rainfall": 797,
+        "population": "16.8M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[77.0, 28.4], [77.4, 28.4], [77.4, 28.8], [77.0, 28.8], [77.0, 28.4]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Gurugram",
+        "state": "Haryana",
+        "taluka": "Gurugram",
+        "risk_level": "Low",
+        "elevation": 217,
+        "rainfall": 714,
+        "population": "1.5M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.8, 28.3], [77.2, 28.3], [77.2, 28.7], [76.8, 28.7], [76.8, 28.3]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Faridabad",
+        "state": "Haryana",
+        "taluka": "Faridabad",
+        "risk_level": "Low",
+        "elevation": 198,
+        "rainfall": 617,
+        "population": "1.4M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[77.2, 28.2], [77.6, 28.2], [77.6, 28.6], [77.2, 28.6], [77.2, 28.2]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Chandigarh",
+        "state": "Chandigarh",
+        "taluka": "Chandigarh",
+        "risk_level": "Low",
+        "elevation": 321,
+        "rainfall": 1110,
+        "population": "1.0M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[76.6, 30.5], [77.0, 30.5], [77.0, 30.9], [76.6, 30.9], [76.6, 30.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Lucknow",
+        "state": "Uttar Pradesh",
+        "taluka": "Lucknow",
+        "risk_level": "Medium",
+        "elevation": 123,
+        "rainfall": 1000,
+        "population": "2.8M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[80.7, 26.6], [81.1, 26.6], [81.1, 27.0], [80.7, 27.0], [80.7, 26.6]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Kanpur",
+        "state": "Uttar Pradesh",
+        "taluka": "Kanpur",
+        "risk_level": "Medium",
+        "elevation": 126,
+        "rainfall": 848,
+        "population": "2.7M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[80.1, 26.2], [80.5, 26.2], [80.5, 26.6], [80.1, 26.6], [80.1, 26.2]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Varanasi",
+        "state": "Uttar Pradesh",
+        "taluka": "Varanasi",
+        "risk_level": "Medium",
+        "elevation": 81,
+        "rainfall": 1050,
+        "population": "1.2M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[82.8, 25.1], [83.2, 25.1], [83.2, 25.5], [82.8, 25.5], [82.8, 25.1]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Agra",
+        "state": "Uttar Pradesh",
+        "taluka": "Agra",
+        "risk_level": "Low",
+        "elevation": 169,
+        "rainfall": 652,
+        "population": "1.6M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[77.8, 27.0], [78.2, 27.0], [78.2, 27.4], [77.8, 27.4], [77.8, 27.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Allahabad",
+        "state": "Uttar Pradesh",
+        "taluka": "Prayagraj",
+        "risk_level": "Medium",
+        "elevation": 98,
+        "rainfall": 1027,
+        "population": "1.5M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[81.6, 25.2], [82.0, 25.2], [82.0, 25.6], [81.6, 25.6], [81.6, 25.2]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "district_name": "Indore",
         "state": "Madhya Pradesh",
+        "taluka": "Indore",
         "risk_level": "Low",
         "elevation": 553,
         "rainfall": 938,
@@ -471,6 +998,7 @@
       "properties": {
         "district_name": "Bhopal",
         "state": "Madhya Pradesh",
+        "taluka": "Bhopal",
         "risk_level": "Low",
         "elevation": 500,
         "rainfall": 1146,
@@ -479,6 +1007,374 @@
       "geometry": {
         "type": "Polygon",
         "coordinates": [[[77.2, 23.0], [77.6, 23.0], [77.6, 23.4], [77.2, 23.4], [77.2, 23.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Jabalpur",
+        "state": "Madhya Pradesh",
+        "taluka": "Jabalpur",
+        "risk_level": "Low",
+        "elevation": 411,
+        "rainfall": 1348,
+        "population": "1.1M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[79.7, 22.9], [80.1, 22.9], [80.1, 23.3], [79.7, 23.3], [79.7, 22.9]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Gwalior",
+        "state": "Madhya Pradesh",
+        "taluka": "Gwalior",
+        "risk_level": "Low",
+        "elevation": 197,
+        "rainfall": 765,
+        "population": "1.1M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[78.0, 26.0], [78.4, 26.0], [78.4, 26.4], [78.0, 26.4], [78.0, 26.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Ranchi",
+        "state": "Jharkhand",
+        "taluka": "Ranchi",
+        "risk_level": "Low",
+        "elevation": 651,
+        "rainfall": 1430,
+        "population": "1.1M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[85.1, 23.2], [85.5, 23.2], [85.5, 23.6], [85.1, 23.6], [85.1, 23.2]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Jamshedpur",
+        "state": "Jharkhand",
+        "taluka": "Jamshedpur",
+        "risk_level": "Low",
+        "elevation": 135,
+        "rainfall": 1400,
+        "population": "0.6M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[86.0, 22.6], [86.4, 22.6], [86.4, 23.0], [86.0, 23.0], [86.0, 22.6]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Dhanbad",
+        "state": "Jharkhand",
+        "taluka": "Dhanbad",
+        "risk_level": "Medium",
+        "elevation": 245,
+        "rainfall": 1200,
+        "population": "1.2M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[86.2, 23.6], [86.6, 23.6], [86.6, 24.0], [86.2, 24.0], [86.2, 23.6]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Raipur",
+        "state": "Chhattisgarh",
+        "taluka": "Raipur",
+        "risk_level": "Medium",
+        "elevation": 298,
+        "rainfall": 1300,
+        "population": "1.0M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[81.4, 21.0], [81.8, 21.0], [81.8, 21.4], [81.4, 21.4], [81.4, 21.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Bilaspur",
+        "state": "Chhattisgarh",
+        "taluka": "Bilaspur",
+        "risk_level": "Medium",
+        "elevation": 262,
+        "rainfall": 1350,
+        "population": "0.4M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[82.0, 22.0], [82.4, 22.0], [82.4, 22.4], [82.0, 22.4], [82.0, 22.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Amritsar",
+        "state": "Punjab",
+        "taluka": "Amritsar",
+        "risk_level": "Low",
+        "elevation": 234,
+        "rainfall": 663,
+        "population": "1.1M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[74.7, 31.4], [75.1, 31.4], [75.1, 31.8], [74.7, 31.8], [74.7, 31.4]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Ludhiana",
+        "state": "Punjab",
+        "taluka": "Ludhiana",
+        "risk_level": "Low",
+        "elevation": 247,
+        "rainfall": 709,
+        "population": "1.6M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[75.6, 30.7], [76.0, 30.7], [76.0, 31.1], [75.6, 31.1], [75.6, 30.7]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Jalandhar",
+        "state": "Punjab",
+        "taluka": "Jalandhar",
+        "risk_level": "Low",
+        "elevation": 228,
+        "rainfall": 700,
+        "population": "0.9M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[75.3, 31.1], [75.7, 31.1], [75.7, 31.5], [75.3, 31.5], [75.3, 31.1]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Srinagar",
+        "state": "Jammu and Kashmir",
+        "taluka": "Srinagar",
+        "risk_level": "Medium",
+        "elevation": 1585,
+        "rainfall": 720,
+        "population": "1.2M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[74.6, 33.9], [75.0, 33.9], [75.0, 34.3], [74.6, 34.3], [74.6, 33.9]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Jammu",
+        "state": "Jammu and Kashmir",
+        "taluka": "Jammu",
+        "risk_level": "Low",
+        "elevation": 327,
+        "rainfall": 1115,
+        "population": "0.5M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[74.6, 32.5], [75.0, 32.5], [75.0, 32.9], [74.6, 32.9], [74.6, 32.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Dehradun",
+        "state": "Uttarakhand",
+        "taluka": "Dehradun",
+        "risk_level": "Medium",
+        "elevation": 640,
+        "rainfall": 2073,
+        "population": "0.6M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[78.0, 30.1], [78.4, 30.1], [78.4, 30.5], [78.0, 30.5], [78.0, 30.1]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Haridwar",
+        "state": "Uttarakhand",
+        "taluka": "Haridwar",
+        "risk_level": "Medium",
+        "elevation": 314,
+        "rainfall": 1100,
+        "population": "0.2M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[77.8, 29.8], [78.2, 29.8], [78.2, 30.2], [77.8, 30.2], [77.8, 29.8]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Imphal",
+        "state": "Manipur",
+        "taluka": "Imphal West",
+        "risk_level": "Medium",
+        "elevation": 786,
+        "rainfall": 1467,
+        "population": "0.3M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[93.7, 24.6], [94.1, 24.6], [94.1, 25.0], [93.7, 25.0], [93.7, 24.6]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Shillong",
+        "state": "Meghalaya",
+        "taluka": "East Khasi Hills",
+        "risk_level": "Medium",
+        "elevation": 1496,
+        "rainfall": 2818,
+        "population": "0.1M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[91.7, 25.4], [92.1, 25.4], [92.1, 25.8], [91.7, 25.8], [91.7, 25.4]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Aizawl",
+        "state": "Mizoram",
+        "taluka": "Aizawl",
+        "risk_level": "Medium",
+        "elevation": 1132,
+        "rainfall": 2500,
+        "population": "0.3M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[92.6, 23.5], [93.0, 23.5], [93.0, 23.9], [92.6, 23.9], [92.6, 23.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Agartala",
+        "state": "Tripura",
+        "taluka": "West Tripura",
+        "risk_level": "Medium",
+        "elevation": 12,
+        "rainfall": 2100,
+        "population": "0.4M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[91.2, 23.6], [91.6, 23.6], [91.6, 24.0], [91.2, 24.0], [91.2, 23.6]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Kohima",
+        "state": "Nagaland",
+        "taluka": "Kohima",
+        "risk_level": "Medium",
+        "elevation": 1444,
+        "rainfall": 1800,
+        "population": "0.1M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[94.0, 25.5], [94.4, 25.5], [94.4, 25.9], [94.0, 25.9], [94.0, 25.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Itanagar",
+        "state": "Arunachal Pradesh",
+        "taluka": "Papum Pare",
+        "risk_level": "Medium",
+        "elevation": 440,
+        "rainfall": 2800,
+        "population": "0.1M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[93.4, 27.0], [93.8, 27.0], [93.8, 27.4], [93.4, 27.4], [93.4, 27.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Gangtok",
+        "state": "Sikkim",
+        "taluka": "East Sikkim",
+        "risk_level": "Medium",
+        "elevation": 1650,
+        "rainfall": 3500,
+        "population": "0.1M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[88.4, 27.2], [88.8, 27.2], [88.8, 27.6], [88.4, 27.6], [88.4, 27.2]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Panaji",
+        "state": "Goa",
+        "taluka": "Tiswadi",
+        "risk_level": "Medium",
+        "elevation": 7,
+        "rainfall": 2932,
+        "population": "0.1M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[73.7, 15.3], [74.1, 15.3], [74.1, 15.7], [73.7, 15.7], [73.7, 15.3]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "district_name": "Puducherry",
+        "state": "Puducherry",
+        "taluka": "Puducherry",
+        "risk_level": "Medium",
+        "elevation": 15,
+        "rainfall": 1288,
+        "population": "0.2M"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[79.7, 11.7], [80.1, 11.7], [80.1, 12.1], [79.7, 12.1], [79.7, 11.7]]]
       }
     }
   ]
