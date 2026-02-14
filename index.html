@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Risk Intelligence System - India</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Google Fonts - Distinctive Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <div class="water-drop"></div>
+            <div class="loading-text">Loading Flood Risk Data...</div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="icon-wrapper">
+                        <svg class="flood-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="title-group">
+                        <h1 class="main-title">Flood Risk Intelligence</h1>
+                        <p class="subtitle">Real-Time GIS Analysis & Prediction System</p>
+                    </div>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="highRiskCount">0</span>
+                        <span class="stat-label">High Risk</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="mediumRiskCount">0</span>
+                        <span class="stat-label">Medium Risk</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="lowRiskCount">0</span>
+                        <span class="stat-label">Low Risk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <div class="content-wrapper">
+            <!-- Control Panel -->
+            <div class="control-panel" id="controlPanel">
+                <div class="panel-header">
+                    <h3>Analysis Dashboard</h3>
+                    <button class="toggle-btn" id="togglePanel">
+                        <span></span>
+                    </button>
+                </div>
+                
+                <div class="panel-content">
+                    <!-- Methodology Section -->
+                    <div class="info-card methodology-card">
+                        <div class="card-icon">📊</div>
+                        <h4>Methodology</h4>
+                        <p class="highlight">Weighted Overlay Analysis</p>
+                        <div class="methodology-details">
+                            <div class="method-item">
+                                <span class="dot elevation"></span>
+                                <span>Elevation (DEM)</span>
+                                <span class="weight">30%</span>
+                            </div>
+                            <div class="method-item">
+                                <span class="dot rainfall"></span>
+                                <span>Rainfall Data</span>
+                                <span class="weight">35%</span>
+                            </div>
+                            <div class="method-item">
+                                <span class="dot river"></span>
+                                <span>River Proximity</span>
+                                <span class="weight">25%</span>
+                            </div>
+                            <div class="method-item">
+                                <span class="dot landuse"></span>
+                                <span>Land Use Pattern</span>
+                                <span class="weight">10%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filter Section -->
+                    <div class="info-card filter-card">
+                        <div class="card-icon">🔍</div>
+                        <h4>Risk Filters</h4>
+                        <div class="filter-group">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filterHigh" checked>
+                                <span class="checkmark high"></span>
+                                <span>Show High Risk</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filterMedium" checked>
+                                <span class="checkmark medium"></span>
+                                <span>Show Medium Risk</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" id="filterLow" checked>
+                                <span class="checkmark low"></span>
+                                <span>Show Low Risk</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Search Section -->
+                    <div class="info-card search-card">
+                        <div class="card-icon">📍</div>
+                        <h4>Find Location</h4>
+                        <div class="search-box">
+                            <input type="text" id="searchInput" placeholder="Search district or city...">
+                            <button id="searchBtn">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tips Section -->
+                    <div class="info-card tips-card">
+                        <div class="card-icon">💡</div>
+                        <h4>Interactive Tips</h4>
+                        <ul class="tips-list">
+                            <li>Click any region for detailed risk analysis</li>
+                            <li>Hover to see quick information</li>
+                            <li>Use filters to focus on specific risk levels</li>
+                            <li>Zoom and pan to explore different areas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Container -->
+            <div class="map-section">
+                <div id="map" class="flood-map"></div>
+                
+                <!-- Floating Legend -->
+                <div class="legend-floating">
+                    <div class="legend-header">
+                        <h3>Risk Classification</h3>
+                        <div class="legend-toggle" id="legendToggle">−</div>
+                    </div>
+                    <div class="legend-content" id="legendContent">
+                        <div class="legend-item">
+                            <div class="legend-indicator high-risk">
+                                <span class="pulse-ring"></span>
+                            </div>
+                            <div class="legend-text">
+                                <strong>High Risk</strong>
+                                <span>Immediate attention required</span>
+                            </div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-indicator medium-risk">
+                                <span class="pulse-ring"></span>
+                            </div>
+                            <div class="legend-text">
+                                <strong>Medium Risk</strong>
+                                <span>Moderate flood probability</span>
+                            </div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-indicator low-risk">
+                                <span class="pulse-ring"></span>
+                            </div>
+                            <div class="legend-text">
+                                <strong>Low Risk</strong>
+                                <span>Minimal flood concern</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Source Badge -->
+                <div class="data-badge">
+                    <span class="badge-icon">🛰️</span>
+                    <span class="badge-text">Real GIS Data • Updated 2024</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Final Year Project</h4>
+                    <p>Computer Engineering | GIS & Remote Sensing</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Technology Stack</h4>
+                    <p>QGIS • Leaflet.js • HTML5 • CSS3 • JavaScript</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Data Sources</h4>
+                    <p>IMD • ISRO • Government of India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Flood Risk Intelligence System. Academic Research Project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
