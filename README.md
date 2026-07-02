@@ -202,10 +202,9 @@ This is an academic project, but suggestions are welcome:
 
 ## 📧 Contact
 
-**Student Name**: [Your Name]  
-**College**: [Your College Name]  
-**Email**: [your.email@example.com]  
-**Project Guide**: [Guide Name]  
+**Student Name**: [Bhavesh Oswal]  
+**College**: [ADCET]  
+**Email**: [bhaveshoswal0007@gmail.com]  
 
 ---
 
