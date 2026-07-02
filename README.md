@@ -83,9 +83,7 @@ flood-risk-mapping/
 
 ## 🚀 Live Demo
 
-**Website URL**: `https://YOUR-USERNAME.github.io/flood-risk-mapping/`
-
-*(Replace with your actual GitHub Pages URL after deployment)*
+**Website URL**: `https://bhavesh9423.github.io/flood-risk-mapping/`
 
 ---
 
