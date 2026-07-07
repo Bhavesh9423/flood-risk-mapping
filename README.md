@@ -202,9 +202,9 @@ This is an academic project, but suggestions are welcome:
 
 ## 📧 Contact
 
-**Student Name**: [Bhavesh Oswal]  
-**College**: [ADCET]  
-**Email**: [bhaveshoswal0007@gmail.com]  
+**Student Name**: Bhavesh Oswal
+**College**: ADCET  
+**Email**: bhaveshoswal0007@gmail.com  
 
 ---
 
@@ -249,6 +249,9 @@ Potential improvements for this project:
 ## 📸 Screenshots
 
 *(Add screenshots of your application here after deployment)*
+<img width="1920" height="910" alt="Screenshot 2026-07-07 180551" src="https://github.com/user-attachments/assets/30eecf23-2904-4ee5-9221-0ab46f74854f" />
+<img width="1914" height="907" alt="Screenshot 2026-07-07 180629" src="https://github.com/user-attachments/assets/b80bc388-ff9c-42ee-ad22-02cd4505bca1" />
+
 
 ---
 
