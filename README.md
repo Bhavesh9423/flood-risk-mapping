@@ -148,8 +148,6 @@ Your GeoJSON file should follow this structure:
 
 ## 🎓 Academic Context
 
-### Course: Computer Engineering (Final Year)
-
 ### Project Components:
 1. **Literature Survey**: Study of flood risk assessment methods
 2. **GIS Analysis**: Weighted overlay in QGIS
@@ -203,7 +201,6 @@ This is an academic project, but suggestions are welcome:
 ## 📧 Contact
 
 **Student Name**: Bhavesh Oswal
-**College**: ADCET  
 **Email**: bhaveshoswal0007@gmail.com  
 
 ---
@@ -248,7 +245,6 @@ Potential improvements for this project:
 
 ## 📸 Screenshots
 
-*(Add screenshots of your application here after deployment)*
 <img width="1920" height="910" alt="Screenshot 2026-07-07 180551" src="https://github.com/user-attachments/assets/30eecf23-2904-4ee5-9221-0ab46f74854f" />
 <img width="1914" height="907" alt="Screenshot 2026-07-07 180629" src="https://github.com/user-attachments/assets/b80bc388-ff9c-42ee-ad22-02cd4505bca1" />
 
@@ -259,4 +255,4 @@ Potential improvements for this project:
 
 ---
 
-*Last Updated: February 2026*
+*Last Updated: July 2026*
