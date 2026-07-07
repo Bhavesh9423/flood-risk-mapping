@@ -200,8 +200,9 @@ This is an academic project, but suggestions are welcome:
 
 ## 📧 Contact
 
-**Student Name**: Bhavesh Oswal
-**Email**: bhaveshoswal0007@gmail.com  
+- **Student Name**: Bhavesh Oswal
+
+- **Email**: bhaveshoswal0007@gmail.com  
 
 ---
 
