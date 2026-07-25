@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Risk Intelligence System - India</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', sans-serif; background: #0a1929; color: #e2e8f0; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+        /* HEADER */
+        .header { background: linear-gradient(135deg, #0a1929 0%, #0d2137 100%); border-bottom: 1px solid rgba(6,182,212,0.3); padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; z-index: 1000; flex-shrink: 0; }
+        .logo-section { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #06b6d4, #0891b2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .title-group h1 { font-size: 20px; font-weight: 800; background: linear-gradient(135deg, #06b6d4, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-group p { font-size: 11px; color: #64748b; }
+
+        /* LIVE BADGE */
+        .live-badge { display: flex; align-items: center; gap: 6px; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); border-radius: 20px; padding: 4px 12px; }
+        .live-dot { width: 8px; height: 8px; background: #ef4444; border-radius: 50%; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1; transform:scale(1);} 50%{opacity:0.5; transform:scale(0.8);} }
+        .live-text { font-size: 12px; font-weight: 700; color: #ef4444; letter-spacing: 1px; }
+        .update-time { font-size: 10px; color: #64748b; margin-left: 8px; }
+
+        /* STATS */
+        .header-stats { display: flex; gap: 12px; }
+        .stat-pill { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 8px 16px; text-align: center; }
+        .stat-pill .num { font-size: 22px; font-weight: 800; }
+        .stat-pill .lbl { font-size: 9px; color: #94a3b8; letter-spacing: 1px; }
+        .stat-pill.high .num { color: #ef4444; }
+        .stat-pill.med .num { color: #f59e0b; }
+        .stat-pill.low .num { color: #10b981; }
+
+        /* MAIN LAYOUT */
+        .main-layout { display: flex; flex: 1; overflow: hidden; }
+
+        /* SIDEBAR */
+        .sidebar { width: 300px; background: #0d2137; border-right: 1px solid rgba(6,182,212,0.2); display: flex; flex-direction: column; overflow-y: auto; flex-shrink: 0; }
+
+        .sidebar-section { padding: 14px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .section-title { font-size: 11px; font-weight: 700; color: #06b6d4; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
+
+        /* LIVE WEATHER PANEL */
+        .weather-panel { background: rgba(6,182,212,0.05); border: 1px solid rgba(6,182,212,0.2); border-radius: 10px; padding: 12px; }
+        .weather-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+        .weather-title { font-size: 13px; font-weight: 700; color: #e2e8f0; }
+        .refresh-btn { background: rgba(6,182,212,0.2); border: 1px solid #06b6d4; color: #06b6d4; border-radius: 6px; padding: 3px 8px; font-size: 11px; cursor: pointer; }
+        .refresh-btn:hover { background: rgba(6,182,212,0.4); }
+
+        .weather-city-selector { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #e2e8f0; padding: 6px 10px; font-size: 12px; margin-bottom: 10px; }
+
+        .weather-data { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .weather-item { background: rgba(255,255,255,0.03); border-radius: 8px; padding: 8px; text-align: center; }
+        .weather-item .w-icon { font-size: 18px; margin-bottom: 4px; }
+        .weather-item .w-val { font-size: 16px; font-weight: 700; color: #06b6d4; }
+        .weather-item .w-lbl { font-size: 9px; color: #64748b; }
+
+        .flood-alert { margin-top: 10px; border-radius: 8px; padding: 8px 12px; font-size: 12px; font-weight: 600; text-align: center; }
+        .alert-danger { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color: #ef4444; }
+        .alert-warning { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.4); color: #f59e0b; }
+        .alert-safe { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.4); color: #10b981; }
+
+        /* FILTER PANEL */
+        .filter-btn { display: flex; align-items: center; gap: 8px; width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 12px; cursor: pointer; color: #e2e8f0; font-size: 13px; margin-bottom: 6px; transition: all 0.2s; }
+        .filter-btn:hover { background: rgba(255,255,255,0.07); }
+        .filter-btn.active-high { border-color: rgba(239,68,68,0.5); background: rgba(239,68,68,0.1); }
+        .filter-btn.active-med { border-color: rgba(245,158,11,0.5); background: rgba(245,158,11,0.1); }
+        .filter-btn.active-low { border-color: rgba(16,185,129,0.5); background: rgba(16,185,129,0.1); }
+        .filter-dot { width: 14px; height: 14px; border-radius: 4px; flex-shrink: 0; }
+        .dot-high { background: #ef4444; }
+        .dot-med { background: #f59e0b; }
+        .dot-low { background: #10b981; }
+        .filter-check { margin-left: auto; font-size: 16px; }
+
+        /* SEARCH */
+        .search-wrap { position: relative; }
+        .search-input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(6,182,212,0.3); border-radius: 8px; color: #e2e8f0; padding: 8px 35px 8px 12px; font-size: 13px; }
+        .search-input::placeholder { color: #64748b; }
+        .search-input:focus { outline: none; border-color: #06b6d4; }
+        .search-icon { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: #06b6d4; font-size: 14px; }
+
+        /* ALERTS FEED */
+        .alert-feed { max-height: 200px; overflow-y: auto; }
+        .alert-item { background: rgba(255,255,255,0.03); border-left: 3px solid #ef4444; border-radius: 0 8px 8px 0; padding: 8px 10px; margin-bottom: 6px; }
+        .alert-item.warn { border-left-color: #f59e0b; }
+        .alert-item .a-city { font-size: 12px; font-weight: 700; color: #e2e8f0; }
+        .alert-item .a-msg { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+        .alert-item .a-time { font-size: 10px; color: #475569; margin-top: 2px; }
+
+        /* LEGEND */
+        .legend-item { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 12px; }
+        .legend-color { width: 20px; height: 14px; border-radius: 3px; opacity: 0.8; }
+
+        /* MAP */
+        .map-container { flex: 1; position: relative; }
+        #map { width: 100%; height: 100%; }
+
+        /* MAP OVERLAY */
+        .map-overlay { position: absolute; top: 10px; right: 10px; z-index: 1000; display: flex; flex-direction: column; gap: 8px; }
+        .overlay-btn { background: #0d2137; border: 1px solid rgba(6,182,212,0.3); border-radius: 8px; padding: 8px 14px; font-size: 12px; font-weight: 600; color: #06b6d4; cursor: pointer; white-space: nowrap; }
+        .overlay-btn:hover { background: rgba(6,182,212,0.1); }
+        .overlay-btn.active { background: rgba(6,182,212,0.2); border-color: #06b6d4; }
+
+        /* POPUP STYLES */
+        .custom-popup .leaflet-popup-content-wrapper { background: #0d2137; border: 1px solid rgba(6,182,212,0.4); border-radius: 12px; color: #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .custom-popup .leaflet-popup-tip { background: #0d2137; }
+        .popup-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+        .popup-city { font-size: 18px; font-weight: 800; color: #e2e8f0; }
+        .popup-state { font-size: 12px; color: #64748b; }
+        .risk-badge { padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+        .risk-high { background: rgba(239,68,68,0.2); color: #ef4444; border: 1px solid rgba(239,68,68,0.4); }
+        .risk-med { background: rgba(245,158,11,0.2); color: #f59e0b; border: 1px solid rgba(245,158,11,0.4); }
+        .risk-low { background: rgba(16,185,129,0.2); color: #10b981; border: 1px solid rgba(16,185,129,0.4); }
+        .popup-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 10px 0; }
+        .popup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+        .popup-stat { background: rgba(255,255,255,0.04); border-radius: 8px; padding: 8px; text-align: center; }
+        .popup-stat .ps-val { font-size: 16px; font-weight: 700; color: #06b6d4; }
+        .popup-stat .ps-lbl { font-size: 10px; color: #64748b; margin-top: 2px; }
+        .flood-zones-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 8px; padding: 8px 10px; }
+        .flood-zones-title { font-size: 11px; font-weight: 700; color: #ef4444; margin-bottom: 4px; letter-spacing: 0.5px; }
+        .flood-zones-list { font-size: 11px; color: #cbd5e1; }
+        .live-rain-box { background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.2); border-radius: 8px; padding: 8px 10px; margin-top: 8px; }
+        .live-rain-title { font-size: 11px; font-weight: 700; color: #06b6d4; margin-bottom: 6px; }
+        .live-rain-data { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .lrd-item { font-size: 11px; color: #94a3b8; }
+        .lrd-item span { color: #e2e8f0; font-weight: 600; }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(6,182,212,0.3); border-radius: 2px; }
+
+        @media (max-width: 768px) {
+            .sidebar { width: 250px; }
+            .header-stats { display: none; }
+            .title-group p { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="logo-section">
+        <div class="logo-icon">🌊</div>
+        <div class="title-group">
+            <h1>Flood Risk Intelligence</h1>
+            <p>Real-Time GIS Analysis & Prediction System</p>
+        </div>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px;">
+        <div class="live-badge">
+            <div class="live-dot"></div>
+            <span class="live-text">LIVE</span>
+            <span class="update-time" id="updateTime">Updating...</span>
+        </div>
+        <div class="header-stats">
+            <div class="stat-pill high"><div class="num" id="highCount">—</div><div class="lbl">HIGH RISK</div></div>
+            <div class="stat-pill med"><div class="num" id="medCount">—</div><div class="lbl">MEDIUM RISK</div></div>
+            <div class="stat-pill low"><div class="num" id="lowCount">—</div><div class="lbl">LOW RISK</div></div>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN -->
+<div class="main-layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <!-- LIVE WEATHER -->
+        <div class="sidebar-section">
+            <div class="section-title">🌧 Live Weather & Flood Alert</div>
+            <div class="weather-panel">
+                <div class="weather-header">
+                    <div class="weather-title" id="weatherCityName">Select a City</div>
+                    <button class="refresh-btn" onclick="refreshWeather()">↻ Refresh</button>
+                </div>
+                <select class="weather-city-selector" id="citySelector" onchange="loadWeatherForCity(this.value)">
+                    <option value="">— Choose City —</option>
+                    <option value="Mumbai,Maharashtra">Mumbai</option>
+                    <option value="Kolhapur,Maharashtra">Kolhapur</option>
+                    <option value="Kolkata,West Bengal">Kolkata</option>
+                    <option value="Patna,Bihar">Patna</option>
+                    <option value="Guwahati,Assam">Guwahati</option>
+                    <option value="Chennai,Tamil Nadu">Chennai</option>
+                    <option value="Delhi,Delhi">Delhi</option>
+                    <option value="Surat,Gujarat">Surat</option>
+                    <option value="Kochi,Kerala">Kochi</option>
+                    <option value="Vijayawada,Andhra Pradesh">Vijayawada</option>
+                    <option value="Cuttack,Odisha">Cuttack</option>
+                    <option value="Varanasi,Uttar Pradesh">Varanasi</option>
+                    <option value="Sangli,Maharashtra">Sangli</option>
+                    <option value="Puri,Odisha">Puri</option>
+                </select>
+                <div class="weather-data" id="weatherData">
+                    <div class="weather-item"><div class="w-icon">🌡️</div><div class="w-val" id="wTemp">—</div><div class="w-lbl">Temperature</div></div>
+                    <div class="weather-item"><div class="w-icon">💧</div><div class="w-val" id="wHumid">—</div><div class="w-lbl">Humidity</div></div>
+                    <div class="weather-item"><div class="w-icon">🌧️</div><div class="w-val" id="wRain">—</div><div class="w-lbl">Rainfall Today</div></div>
+                    <div class="weather-item"><div class="w-icon">💨</div><div class="w-val" id="wWind">—</div><div class="w-lbl">Wind Speed</div></div>
+                </div>
+                <div class="flood-alert alert-safe" id="floodAlertBox">
+                    Select a city to check flood alert
+                </div>
+            </div>
+        </div>
+
+        <!-- FILTERS -->
+        <div class="sidebar-section">
+            <div class="section-title">⚡ Risk Filters</div>
+            <div class="filter-btn active-high" id="filterHigh" onclick="toggleFilter('High')">
+                <div class="filter-dot dot-high"></div>
+                Show High Risk
+                <span class="filter-check">✓</span>
+            </div>
+            <div class="filter-btn active-med" id="filterMed" onclick="toggleFilter('Medium')">
+                <div class="filter-dot dot-med"></div>
+                Show Medium Risk
+                <span class="filter-check">✓</span>
+            </div>
+            <div class="filter-btn active-low" id="filterLow" onclick="toggleFilter('Low')">
+                <div class="filter-dot dot-low"></div>
+                Show Low Risk
+                <span class="filter-check">✓</span>
+            </div>
+        </div>
+
+        <!-- SEARCH -->
+        <div class="sidebar-section">
+            <div class="section-title">🔍 Find Location</div>
+            <div class="search-wrap">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search district or city..." oninput="searchCity(this.value)">
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+
+        <!-- LIVE ALERTS FEED -->
+        <div class="sidebar-section">
+            <div class="section-title">🚨 Live Flood Alerts</div>
+            <div class="alert-feed" id="alertFeed">
+                <div style="color:#64748b; font-size:12px; text-align:center; padding:20px;">Loading alerts...</div>
+            </div>
+        </div>
+
+        <!-- LEGEND -->
+        <div class="sidebar-section">
+            <div class="section-title">📊 Risk Classification</div>
+            <div class="legend-item"><div class="legend-color" style="background:#ef4444;"></div><span>High Risk — Immediate attention required</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:#f59e0b;"></div><span>Medium Risk — Moderate flood probability</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:#10b981;"></div><span>Low Risk — Minimal flood concern</span></div>
+            <div style="margin-top:10px; font-size:10px; color:#475569;">
+                Shapes show actual flood-prone geographic areas.<br>
+                Live data updates every 30 minutes.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MAP -->
+    <div class="map-container">
+        <div id="map"></div>
+        <div class="map-overlay">
+            <button class="overlay-btn active" onclick="toggleLayer('flood')" id="btnFlood">🌊 Flood Zones</button>
+            <button class="overlay-btn" onclick="toggleLayer('rain')" id="btnRain">🌧 Rainfall Heat</button>
+            <button class="overlay-btn" onclick="resetView()">🗺 Reset View</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
