@@ -1,400 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flood Risk Intelligence - ADCET Ashta</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Outfit',sans-serif;background:#0a1929;color:#e2e8f0;display:flex;flex-direction:column;height:100vh;overflow:hidden;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flood Risk Intelligence — India</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Outfit',sans-serif;background:#0a1929;color:#e2e8f0;display:flex;flex-direction:column;height:100vh;overflow:hidden;}
 
-        /* ── HEADER ── */
-        .header{background:linear-gradient(135deg,#061422,#0d2137);border-bottom:1px solid rgba(6,182,212,.3);padding:8px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;z-index:1000;}
-        .logo-wrap{display:flex;align-items:center;gap:10px;}
-        .logo-box{width:38px;height:38px;background:linear-gradient(135deg,#06b6d4,#0891b2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;}
-        .logo-text h1{font-size:18px;font-weight:800;background:linear-gradient(135deg,#06b6d4,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-        .logo-text p{font-size:10px;color:#64748b;}
-        .header-mid{text-align:center;}
-        .header-mid .college-name{font-size:11px;font-weight:700;color:#94a3b8;}
-        .header-mid .project-label{font-size:10px;color:#475569;}
-        .header-right{display:flex;align-items:center;gap:10px;}
-        .live-chip{display:flex;align-items:center;gap:5px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.35);border-radius:20px;padding:3px 10px;}
-        .live-dot{width:7px;height:7px;background:#ef4444;border-radius:50%;animation:blink 1.4s infinite;}
-        @keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
-        .live-text{font-size:11px;font-weight:700;color:#ef4444;letter-spacing:1px;}
-        .stat-row{display:flex;gap:8px;}
-        .stat-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:6px 12px;text-align:center;}
-        .stat-box .n{font-size:20px;font-weight:800;}
-        .stat-box .l{font-size:8px;color:#94a3b8;letter-spacing:1px;}
-        .stat-box.h .n{color:#ef4444;} .stat-box.m .n{color:#f59e0b;} .stat-box.lo .n{color:#10b981;}
+/* HEADER */
+.header{background:linear-gradient(135deg,#071523,#0e2439);border-bottom:1px solid rgba(6,182,212,.25);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;z-index:1000;}
+.logo-wrap{display:flex;align-items:center;gap:12px;}
+.logo-box{width:42px;height:42px;background:linear-gradient(135deg,#06b6d4,#0891b2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 14px rgba(6,182,212,.35);}
+.logo-text h1{font-size:19px;font-weight:800;background:linear-gradient(135deg,#06b6d4,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.3px;}
+.logo-text p{font-size:11px;color:#64748b;margin-top:1px;}
+.header-right{display:flex;align-items:center;gap:14px;}
+.live-chip{display:flex;align-items:center;gap:6px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:20px;padding:5px 12px;}
+.live-dot{width:7px;height:7px;background:#ef4444;border-radius:50%;animation:blink 1.4s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+.live-text{font-size:11px;font-weight:700;color:#ef4444;letter-spacing:1px;}
+.stat-row{display:flex;gap:10px;}
+.stat-box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:8px 16px;text-align:center;min-width:64px;}
+.stat-box .n{font-size:22px;font-weight:800;line-height:1;}
+.stat-box .l{font-size:9px;color:#94a3b8;letter-spacing:1px;margin-top:3px;}
+.stat-box.h .n{color:#ef4444;} .stat-box.m .n{color:#f59e0b;} .stat-box.lo .n{color:#10b981;}
 
-        /* ── BODY LAYOUT ── */
-        .body-wrap{display:flex;flex:1;overflow:hidden;}
+/* BODY */
+.body-wrap{display:flex;flex:1;overflow:hidden;}
 
-        /* ── SIDEBAR ── */
-        .sidebar{width:290px;background:#0d2137;border-right:1px solid rgba(6,182,212,.15);display:flex;flex-direction:column;overflow-y:auto;flex-shrink:0;}
-        .sb-block{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.05);}
-        .sb-title{font-size:10px;font-weight:700;color:#06b6d4;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:9px;}
+/* SIDEBAR */
+.sidebar{width:300px;background:#0d2137;border-right:1px solid rgba(6,182,212,.12);display:flex;flex-direction:column;overflow-y:auto;flex-shrink:0;}
+.sb-block{padding:16px;border-bottom:1px solid rgba(255,255,255,.05);}
+.sb-title{font-size:11px;font-weight:700;color:#06b6d4;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
 
-        /* project info card */
-        .info-card{background:rgba(6,182,212,.06);border:1px solid rgba(6,182,212,.2);border-radius:10px;padding:11px;}
-        .info-card .proj-title{font-size:12px;font-weight:700;color:#e2e8f0;line-height:1.4;margin-bottom:8px;}
-        .info-row{display:flex;gap:6px;margin-bottom:5px;align-items:flex-start;}
-        .info-label{font-size:10px;color:#06b6d4;font-weight:700;min-width:60px;flex-shrink:0;}
-        .info-val{font-size:10px;color:#cbd5e1;line-height:1.4;}
-        .tag-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;}
-        .tag{background:rgba(6,182,212,.15);border:1px solid rgba(6,182,212,.25);border-radius:4px;padding:2px 7px;font-size:9px;color:#67e8f9;}
+/* Weather panel */
+.weather-panel{background:linear-gradient(145deg,rgba(6,182,212,.08),rgba(8,145,178,.03));border:1px solid rgba(6,182,212,.2);border-radius:14px;padding:14px;}
+.w-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.w-city{font-size:14px;font-weight:700;color:#e2e8f0;}
+.refresh-btn{background:rgba(6,182,212,.15);border:1px solid #06b6d4;color:#06b6d4;border-radius:8px;padding:4px 10px;font-size:11px;cursor:pointer;font-weight:600;transition:.2s;}
+.refresh-btn:hover{background:rgba(6,182,212,.3);}
+.refresh-btn:active{transform:scale(.95);}
+.city-sel{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:9px;color:#e2e8f0;padding:8px 10px;font-size:12px;margin-bottom:10px;cursor:pointer;}
+.city-sel:focus{outline:none;border-color:#06b6d4;}
+.w-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.w-item{background:rgba(255,255,255,.04);border-radius:9px;padding:9px;text-align:center;}
+.w-item .wi{font-size:18px;margin-bottom:3px;}
+.w-item .wv{font-size:16px;font-weight:700;color:#06b6d4;}
+.w-item .wl{font-size:9px;color:#64748b;margin-top:1px;}
+.alert-box{margin-top:10px;border-radius:9px;padding:8px 12px;font-size:12px;font-weight:700;text-align:center;}
+.a-danger{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.35);color:#ef4444;}
+.a-warn{background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.35);color:#f59e0b;}
+.a-safe{background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.35);color:#10b981;}
+.a-idle{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:#64748b;}
+.status-note{font-size:9px;color:#475569;text-align:center;margin-top:6px;}
 
-        /* students card */
-        .students-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-        .student-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px;text-align:center;}
-        .student-avatar{width:36px;height:36px;border-radius:50%;margin:0 auto 6px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;}
-        .av-blue{background:linear-gradient(135deg,#06b6d4,#0891b2);}
-        .av-purple{background:linear-gradient(135deg,#8b5cf6,#7c3aed);}
-        .s-name{font-size:11px;font-weight:700;color:#e2e8f0;}
-        .s-dept{font-size:9px;color:#64748b;margin-top:2px;}
-        .s-role{font-size:9px;color:#06b6d4;margin-top:3px;}
+/* filters */
+.filter-btn{display:flex;align-items:center;gap:10px;width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:9px 12px;cursor:pointer;color:#e2e8f0;font-size:13px;margin-bottom:6px;transition:.2s;}
+.filter-btn:hover{background:rgba(255,255,255,.06);}
+.fh.on{border-color:rgba(239,68,68,.45);background:rgba(239,68,68,.08);}
+.fm.on{border-color:rgba(245,158,11,.45);background:rgba(245,158,11,.08);}
+.fl.on{border-color:rgba(16,185,129,.45);background:rgba(16,185,129,.08);}
+.fdot{width:12px;height:12px;border-radius:4px;flex-shrink:0;}
+.dh{background:#ef4444;} .dm{background:#f59e0b;} .dl{background:#10b981;}
+.fchk{margin-left:auto;font-size:14px;font-weight:700;color:#06b6d4;}
 
-        /* guide card */
-        .guide-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px;display:flex;align-items:center;gap:10px;}
-        .guide-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#d97706);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
-        .guide-name{font-size:12px;font-weight:700;color:#e2e8f0;}
-        .guide-role{font-size:10px;color:#94a3b8;}
-        .guide-dept{font-size:9px;color:#f59e0b;margin-top:2px;}
+/* search */
+.search-wrap{position:relative;}
+.search-input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(6,182,212,.25);border-radius:10px;color:#e2e8f0;padding:9px 34px 9px 12px;font-size:12px;}
+.search-input::placeholder{color:#475569;}
+.search-input:focus{outline:none;border-color:#06b6d4;}
+.s-icon{position:absolute;right:11px;top:50%;transform:translateY(-50%);font-size:13px;color:#06b6d4;}
+.search-results{margin-top:8px;max-height:160px;overflow-y:auto;}
+.sr-item{padding:7px 10px;background:rgba(255,255,255,.03);border-radius:7px;margin-bottom:4px;font-size:11px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.sr-item:hover{background:rgba(6,182,212,.1);}
+.sr-badge{font-size:9px;padding:2px 7px;border-radius:10px;font-weight:700;}
 
-        /* weather */
-        .weather-panel{background:rgba(6,182,212,.05);border:1px solid rgba(6,182,212,.2);border-radius:10px;padding:10px;}
-        .w-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
-        .w-city{font-size:13px;font-weight:700;color:#e2e8f0;}
-        .refresh-btn{background:rgba(6,182,212,.15);border:1px solid #06b6d4;color:#06b6d4;border-radius:6px;padding:2px 8px;font-size:10px;cursor:pointer;}
-        .city-sel{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:7px;color:#e2e8f0;padding:5px 8px;font-size:11px;margin-bottom:8px;}
-        .w-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
-        .w-item{background:rgba(255,255,255,.03);border-radius:7px;padding:7px;text-align:center;}
-        .w-item .wi{font-size:16px;margin-bottom:2px;}
-        .w-item .wv{font-size:15px;font-weight:700;color:#06b6d4;}
-        .w-item .wl{font-size:8px;color:#64748b;}
-        .alert-box{margin-top:8px;border-radius:7px;padding:7px 10px;font-size:11px;font-weight:700;text-align:center;}
-        .a-danger{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.35);color:#ef4444;}
-        .a-warn{background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.35);color:#f59e0b;}
-        .a-safe{background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.35);color:#10b981;}
+/* alert feed */
+.feed{max-height:190px;overflow-y:auto;}
+.feed-item{background:rgba(255,255,255,.03);border-left:3px solid #ef4444;border-radius:0 8px 8px 0;padding:8px 10px;margin-bottom:6px;cursor:pointer;transition:.2s;}
+.feed-item:hover{background:rgba(255,255,255,.06);}
+.feed-item.warn{border-left-color:#f59e0b;}
+.feed-item .fc{font-size:11.5px;font-weight:700;color:#e2e8f0;}
+.feed-item .fm2{font-size:10px;color:#94a3b8;margin-top:2px;}
+.feed-item .ft{font-size:9px;color:#475569;margin-top:2px;}
 
-        /* filters */
-        .filter-btn{display:flex;align-items:center;gap:8px;width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:7px 10px;cursor:pointer;color:#e2e8f0;font-size:12px;margin-bottom:5px;transition:.2s;}
-        .filter-btn:hover{background:rgba(255,255,255,.06);}
-        .fh.on{border-color:rgba(239,68,68,.45);background:rgba(239,68,68,.08);}
-        .fm.on{border-color:rgba(245,158,11,.45);background:rgba(245,158,11,.08);}
-        .fl.on{border-color:rgba(16,185,129,.45);background:rgba(16,185,129,.08);}
-        .fdot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
-        .dh{background:#ef4444;} .dm{background:#f59e0b;} .dl{background:#10b981;}
-        .fchk{margin-left:auto;font-size:14px;}
+/* legend */
+.leg-item{display:flex;align-items:center;gap:9px;margin-bottom:8px;font-size:12px;color:#cbd5e1;}
+.leg-color{width:20px;height:13px;border-radius:4px;opacity:.85;flex-shrink:0;}
 
-        /* search */
-        .search-wrap{position:relative;}
-        .search-input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(6,182,212,.25);border-radius:7px;color:#e2e8f0;padding:7px 32px 7px 10px;font-size:12px;}
-        .search-input::placeholder{color:#475569;}
-        .search-input:focus{outline:none;border-color:#06b6d4;}
-        .s-icon{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:13px;color:#06b6d4;}
+/* data sources */
+.ds-item{display:flex;align-items:center;gap:8px;font-size:11px;color:#94a3b8;margin-bottom:8px;}
+.ds-icon{font-size:14px;width:20px;text-align:center;}
+.ds-item strong{color:#e2e8f0;}
 
-        /* alert feed */
-        .feed{max-height:160px;overflow-y:auto;}
-        .feed-item{background:rgba(255,255,255,.03);border-left:3px solid #ef4444;border-radius:0 7px 7px 0;padding:7px 9px;margin-bottom:5px;cursor:pointer;}
-        .feed-item.warn{border-left-color:#f59e0b;}
-        .feed-item .fc{font-size:11px;font-weight:700;color:#e2e8f0;}
-        .feed-item .fm2{font-size:10px;color:#94a3b8;margin-top:1px;}
-        .feed-item .ft{font-size:9px;color:#475569;margin-top:1px;}
+/* MAP */
+.map-wrap{flex:1;position:relative;}
+#map{width:100%;height:100%;}
+.map-btns{position:absolute;top:14px;right:14px;z-index:900;display:flex;flex-direction:column;gap:8px;}
+.map-btn{background:#0d2137;border:1px solid rgba(6,182,212,.3);border-radius:9px;padding:8px 14px;font-size:12px;font-weight:600;color:#06b6d4;cursor:pointer;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.3);transition:.2s;}
+.map-btn:hover{background:rgba(6,182,212,.12);}
+.map-btn.active{background:rgba(6,182,212,.2);border-color:#06b6d4;}
 
-        /* legend */
-        .leg-item{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:11px;color:#cbd5e1;}
-        .leg-color{width:18px;height:12px;border-radius:3px;opacity:.8;}
+.map-title-card{position:absolute;top:14px;left:14px;z-index:900;background:rgba(13,33,55,.92);backdrop-filter:blur(8px);border:1px solid rgba(6,182,212,.25);border-radius:12px;padding:10px 16px;box-shadow:0 6px 20px rgba(0,0,0,.4);}
+.map-title-card .mt-title{font-size:12px;font-weight:700;color:#06b6d4;}
+.map-title-card .mt-sub{font-size:10px;color:#64748b;margin-top:2px;}
 
-        /* methodology */
-        .method-step{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;}
-        .step-num{width:22px;height:22px;background:rgba(6,182,212,.2);border:1px solid #06b6d4;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#06b6d4;flex-shrink:0;}
-        .step-text{font-size:10px;color:#94a3b8;line-height:1.4;}
-        .step-text strong{color:#e2e8f0;display:block;margin-bottom:1px;}
-        .weight-bar-row{display:flex;align-items:center;gap:6px;margin-bottom:5px;}
-        .wb-label{font-size:10px;color:#94a3b8;width:80px;flex-shrink:0;}
-        .wb-track{flex:1;height:8px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden;}
-        .wb-fill{height:100%;border-radius:4px;}
-        .wb-pct{font-size:10px;color:#e2e8f0;font-weight:700;width:28px;text-align:right;}
+/* FOOTER */
+.footer{background:#061422;border-top:1px solid rgba(6,182,212,.15);padding:8px 24px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;z-index:1000;}
+.footer-text{font-size:10.5px;color:#475569;}
+.footer-text strong{color:#06b6d4;}
+.footer-right a{color:#06b6d4;text-decoration:none;font-size:10.5px;font-weight:600;}
+.footer-right a:hover{text-decoration:underline;}
 
-        /* ── MAP ── */
-        .map-wrap{flex:1;position:relative;}
-        #map{width:100%;height:100%;}
-        .map-btns{position:absolute;top:10px;right:10px;z-index:900;display:flex;flex-direction:column;gap:6px;}
-        .map-btn{background:#0d2137;border:1px solid rgba(6,182,212,.3);border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;color:#06b6d4;cursor:pointer;white-space:nowrap;}
-        .map-btn:hover{background:rgba(6,182,212,.1);}
-        .map-btn.active{background:rgba(6,182,212,.18);border-color:#06b6d4;}
+/* POPUP */
+.custom-popup .leaflet-popup-content-wrapper{background:#0d2137;border:1px solid rgba(6,182,212,.35);border-radius:14px;color:#e2e8f0;box-shadow:0 14px 36px rgba(0,0,0,.6);}
+.custom-popup .leaflet-popup-tip{background:#0d2137;}
+.pu-city{font-size:18px;font-weight:800;color:#e2e8f0;}
+.pu-state{font-size:11px;color:#64748b;margin-top:1px;}
+.pu-risk{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;}
+.rh{background:rgba(239,68,68,.18);color:#ef4444;border:1px solid rgba(239,68,68,.35);}
+.rm{background:rgba(245,158,11,.18);color:#f59e0b;border:1px solid rgba(245,158,11,.35);}
+.rl{background:rgba(16,185,129,.18);color:#10b981;border:1px solid rgba(16,185,129,.35);}
+.pu-div{height:1px;background:rgba(255,255,255,.07);margin:10px 0;}
+.pu-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
+.pu-stat{background:rgba(255,255,255,.04);border-radius:9px;padding:8px;text-align:center;}
+.pu-stat .pv{font-size:16px;font-weight:700;color:#06b6d4;}
+.pu-stat .pl{font-size:9px;color:#64748b;margin-top:2px;}
+.fz-box{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.18);border-radius:9px;padding:9px 11px;margin-bottom:9px;}
+.fz-title{font-size:10.5px;font-weight:700;color:#ef4444;margin-bottom:4px;}
+.fz-list{font-size:11.5px;color:#cbd5e1;line-height:1.5;}
+.live-box{background:rgba(6,182,212,.07);border:1px solid rgba(6,182,212,.18);border-radius:9px;padding:9px 11px;}
+.live-title{font-size:10.5px;font-weight:700;color:#06b6d4;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;}
+.live-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.lg-item{font-size:10.5px;color:#94a3b8;}
+.lg-item span{color:#e2e8f0;font-weight:600;}
+.pu-alert{margin-top:9px;border-radius:8px;padding:6px 10px;font-size:11.5px;font-weight:700;text-align:center;}
 
-        /* ── FOOTER ── */
-        .footer{background:#061422;border-top:1px solid rgba(6,182,212,.2);padding:6px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;z-index:1000;}
-        .footer-left{font-size:10px;color:#475569;}
-        .footer-left span{color:#06b6d4;font-weight:700;}
-        .footer-center{font-size:10px;color:#475569;text-align:center;}
-        .footer-right{font-size:10px;color:#475569;text-align:right;}
-        .footer-right a{color:#06b6d4;text-decoration:none;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:rgba(6,182,212,.3);border-radius:2px;}
 
-        /* ── POPUP ── */
-        .custom-popup .leaflet-popup-content-wrapper{background:#0d2137;border:1px solid rgba(6,182,212,.35);border-radius:12px;color:#e2e8f0;box-shadow:0 12px 32px rgba(0,0,0,.6);}
-        .custom-popup .leaflet-popup-tip{background:#0d2137;}
-        .pu-city{font-size:17px;font-weight:800;color:#e2e8f0;}
-        .pu-state{font-size:11px;color:#64748b;margin-top:1px;}
-        .pu-risk{padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700;}
-        .rh{background:rgba(239,68,68,.18);color:#ef4444;border:1px solid rgba(239,68,68,.35);}
-        .rm{background:rgba(245,158,11,.18);color:#f59e0b;border:1px solid rgba(245,158,11,.35);}
-        .rl{background:rgba(16,185,129,.18);color:#10b981;border:1px solid rgba(16,185,129,.35);}
-        .pu-div{height:1px;background:rgba(255,255,255,.07);margin:9px 0;}
-        .pu-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:9px;}
-        .pu-stat{background:rgba(255,255,255,.04);border-radius:7px;padding:7px;text-align:center;}
-        .pu-stat .pv{font-size:15px;font-weight:700;color:#06b6d4;}
-        .pu-stat .pl{font-size:9px;color:#64748b;margin-top:2px;}
-        .fz-box{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.18);border-radius:7px;padding:7px 9px;margin-bottom:7px;}
-        .fz-title{font-size:10px;font-weight:700;color:#ef4444;margin-bottom:3px;}
-        .fz-list{font-size:11px;color:#cbd5e1;}
-        .live-box{background:rgba(6,182,212,.07);border:1px solid rgba(6,182,212,.18);border-radius:7px;padding:7px 9px;}
-        .live-title{font-size:10px;font-weight:700;color:#06b6d4;margin-bottom:6px;}
-        .live-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
-        .lg-item{font-size:10px;color:#94a3b8;}
-        .lg-item span{color:#e2e8f0;font-weight:600;}
-        .pu-alert{margin-top:7px;border-radius:6px;padding:5px 8px;font-size:11px;font-weight:700;text-align:center;}
-
-        ::-webkit-scrollbar{width:3px;}
-        ::-webkit-scrollbar-thumb{background:rgba(6,182,212,.25);border-radius:2px;}
-    </style>
+@media(max-width:768px){.sidebar{width:260px;}.stat-row{display:none;}.map-title-card{display:none;}}
+</style>
 </head>
 <body>
 
-<!-- ════════════ HEADER ════════════ -->
 <header class="header">
-    <div class="logo-wrap">
-        <div class="logo-box">🌊</div>
-        <div class="logo-text">
-            <h1>Flood Risk Intelligence</h1>
-            <p>Real-Time GIS Analysis &amp; Prediction System</p>
-        </div>
+  <div class="logo-wrap">
+    <div class="logo-box">🌊</div>
+    <div class="logo-text">
+      <h1>Flood Risk Intelligence</h1>
+      <p>Real-Time GIS Analysis &amp; Prediction System for India</p>
     </div>
-    <div class="header-mid">
-        <div class="college-name">ADCET, Ashta — Minor Project 2024-25</div>
-        <div class="project-label">Identification of Flood-Prone Areas in India Using GIS &amp; Remote Sensing</div>
+  </div>
+  <div class="header-right">
+    <div class="live-chip"><div class="live-dot"></div><span class="live-text">LIVE</span></div>
+    <div class="stat-row">
+      <div class="stat-box h"><div class="n" id="highCount">—</div><div class="l">HIGH RISK</div></div>
+      <div class="stat-box m"><div class="n" id="medCount">—</div><div class="l">MEDIUM RISK</div></div>
+      <div class="stat-box lo"><div class="n" id="lowCount">—</div><div class="l">LOW RISK</div></div>
     </div>
-    <div class="header-right">
-        <div class="live-chip">
-            <div class="live-dot"></div>
-            <span class="live-text">LIVE</span>
-        </div>
-        <div class="stat-row">
-            <div class="stat-box h"><div class="n" id="highCount">—</div><div class="l">HIGH</div></div>
-            <div class="stat-box m"><div class="n" id="medCount">—</div><div class="l">MEDIUM</div></div>
-            <div class="stat-box lo"><div class="n" id="lowCount">—</div><div class="l">LOW</div></div>
-        </div>
-    </div>
+  </div>
 </header>
 
-<!-- ════════════ BODY ════════════ -->
 <div class="body-wrap">
 
-<!-- ═══ SIDEBAR ═══ -->
-<div class="sidebar">
+  <div class="sidebar">
 
-    <!-- 1. PROJECT INFO -->
+    <!-- LIVE WEATHER -->
     <div class="sb-block">
-        <div class="sb-title">📋 Project Details</div>
-        <div class="info-card">
-            <div class="proj-title">Identification of Flood-Prone Areas in India Using GIS and Remote Sensing</div>
-            <div class="info-row"><span class="info-label">College</span><span class="info-val">Annasaheb Dange College of Engineering & Technology, Ashta</span></div>
-            <div class="info-row"><span class="info-label">University</span><span class="info-val">Shivaji University, Kolhapur</span></div>
-            <div class="info-row"><span class="info-label">Type</span><span class="info-val">Minor Project — Academic Year 2024-25</span></div>
-            <div class="info-row"><span class="info-label">Domain</span><span class="info-val">GIS • Remote Sensing • Disaster Management</span></div>
-            <div class="tag-row">
-                <span class="tag">QGIS Analysis</span>
-                <span class="tag">Leaflet.js</span>
-                <span class="tag">Live API</span>
-                <span class="tag">GeoJSON</span>
-                <span class="tag">WebDev</span>
-            </div>
+      <div class="sb-title">🌧 Live Weather &amp; Flood Alert</div>
+      <div class="weather-panel">
+        <div class="w-header">
+          <div class="w-city" id="wCityName">Select a City</div>
+          <button class="refresh-btn" id="refreshBtn" onclick="refreshWeather()">↻ Refresh</button>
         </div>
+        <select class="city-sel" id="citySelector" onchange="loadWeather(this.value)">
+          <option value="">— Choose a City —</option>
+        </select>
+        <div class="w-grid">
+          <div class="w-item"><div class="wi">🌡️</div><div class="wv" id="wTemp">—</div><div class="wl">Temperature</div></div>
+          <div class="w-item"><div class="wi">💧</div><div class="wv" id="wHumid">—</div><div class="wl">Humidity</div></div>
+          <div class="w-item"><div class="wi">🌧️</div><div class="wv" id="wRain">—</div><div class="wl">Rain Today</div></div>
+          <div class="w-item"><div class="wi">💨</div><div class="wv" id="wWind">—</div><div class="wl">Wind Speed</div></div>
+        </div>
+        <div class="alert-box a-idle" id="alertBox">Select a city to check live flood alert</div>
+        <div class="status-note" id="statusNote"></div>
+      </div>
     </div>
 
-    <!-- 2. STUDENTS -->
+    <!-- FILTERS -->
     <div class="sb-block">
-        <div class="sb-title">👨‍💻 Project Team</div>
-        <div class="students-grid">
-            <div class="student-card">
-                <div class="student-avatar av-blue">BO</div>
-                <div class="s-name">Bhavesh Oswal</div>
-                <div class="s-dept">AIDS Department</div>
-                <div class="s-role">GIS Analysis &amp; Backend</div>
-            </div>
-            <div class="student-card">
-                <div class="student-avatar av-purple">WK</div>
-                <div class="s-name">Wasif Kazi</div>
-                <div class="s-dept">CSE Department</div>
-                <div class="s-role">Web Dev &amp; Frontend</div>
-            </div>
-        </div>
+      <div class="sb-title">⚡ Risk Filters</div>
+      <div class="filter-btn fh on" id="fHigh" onclick="toggleFilter('High')"><div class="fdot dh"></div>Show High Risk<span class="fchk" id="ckH">✓</span></div>
+      <div class="filter-btn fm on" id="fMed" onclick="toggleFilter('Medium')"><div class="fdot dm"></div>Show Medium Risk<span class="fchk" id="ckM">✓</span></div>
+      <div class="filter-btn fl on" id="fLow" onclick="toggleFilter('Low')"><div class="fdot dl"></div>Show Low Risk<span class="fchk" id="ckL">✓</span></div>
     </div>
 
-    <!-- 3. GUIDE -->
+    <!-- SEARCH -->
     <div class="sb-block">
-        <div class="sb-title">🎓 Project Guide</div>
-        <div class="guide-card">
-            <div class="guide-av">👨‍🏫</div>
-            <div>
-                <div class="guide-name">Prof. [Guide Name]</div>
-                <div class="guide-role">Project Supervisor</div>
-                <div class="guide-dept">ADCET, Ashta</div>
-            </div>
-        </div>
+      <div class="sb-title">🔍 Find Location</div>
+      <div class="search-wrap">
+        <input class="search-input" id="searchInput" placeholder="Search district or city..." oninput="searchCity(this.value)">
+        <span class="s-icon">🔍</span>
+      </div>
+      <div class="search-results" id="searchResults"></div>
     </div>
 
-    <!-- 4. LIVE WEATHER -->
+    <!-- ALERTS FEED -->
     <div class="sb-block">
-        <div class="sb-title">🌧 Live Weather Alert</div>
-        <div class="weather-panel">
-            <div class="w-header">
-                <div class="w-city" id="wCityName">Select a City</div>
-                <button class="refresh-btn" onclick="refreshWeather()">↻ Refresh</button>
-            </div>
-            <select class="city-sel" id="citySelector" onchange="loadWeather(this.value)">
-                <option value="">— Choose City —</option>
-                <option value="Mumbai,19.076,72.877">Mumbai</option>
-                <option value="Kolhapur,16.700,74.240">Kolhapur</option>
-                <option value="Sangli,16.860,74.570">Sangli</option>
-                <option value="Kolkata,22.572,88.363">Kolkata</option>
-                <option value="Patna,25.594,85.137">Patna</option>
-                <option value="Guwahati,26.144,91.736">Guwahati</option>
-                <option value="Chennai,13.082,80.270">Chennai</option>
-                <option value="Delhi,28.704,77.102">Delhi</option>
-                <option value="Surat,21.170,72.831">Surat</option>
-                <option value="Kochi,9.931,76.267">Kochi</option>
-                <option value="Vijayawada,16.506,80.648">Vijayawada</option>
-                <option value="Cuttack,20.462,85.882">Cuttack</option>
-                <option value="Varanasi,25.317,82.973">Varanasi</option>
-                <option value="Puri,19.813,85.831">Puri</option>
-                <option value="Bangalore,12.971,77.594">Bangalore</option>
-                <option value="Pune,18.520,73.856">Pune</option>
-            </select>
-            <div class="w-grid">
-                <div class="w-item"><div class="wi">🌡️</div><div class="wv" id="wTemp">—</div><div class="wl">Temp</div></div>
-                <div class="w-item"><div class="wi">💧</div><div class="wv" id="wHumid">—</div><div class="wl">Humidity</div></div>
-                <div class="w-item"><div class="wi">🌧️</div><div class="wv" id="wRain">—</div><div class="wl">Rain Today</div></div>
-                <div class="w-item"><div class="wi">💨</div><div class="wv" id="wWind">—</div><div class="wl">Wind</div></div>
-            </div>
-            <div class="alert-box a-safe" id="alertBox">Select a city above</div>
-        </div>
+      <div class="sb-title">🚨 Live Flood Alerts</div>
+      <div class="feed" id="alertFeed"><div style="color:#475569;font-size:11px;text-align:center;padding:18px;">Loading live alerts...</div></div>
     </div>
 
-    <!-- 5. FILTERS -->
+    <!-- LEGEND -->
     <div class="sb-block">
-        <div class="sb-title">⚡ Risk Filters</div>
-        <div class="filter-btn fh on" id="fHigh" onclick="toggleFilter('High')">
-            <div class="fdot dh"></div>Show High Risk<span class="fchk" id="ckH">✓</span>
-        </div>
-        <div class="filter-btn fm on" id="fMed" onclick="toggleFilter('Medium')">
-            <div class="fdot dm"></div>Show Medium Risk<span class="fchk" id="ckM">✓</span>
-        </div>
-        <div class="filter-btn fl on" id="fLow" onclick="toggleFilter('Low')">
-            <div class="fdot dl"></div>Show Low Risk<span class="fchk" id="ckL">✓</span>
-        </div>
+      <div class="sb-title">📊 Risk Classification</div>
+      <div class="leg-item"><div class="leg-color" style="background:#ef4444;"></div>High Risk — Immediate attention required</div>
+      <div class="leg-item"><div class="leg-color" style="background:#f59e0b;"></div>Medium Risk — Moderate flood probability</div>
+      <div class="leg-item"><div class="leg-color" style="background:#10b981;"></div>Low Risk — Minimal flood concern</div>
     </div>
 
-    <!-- 6. SEARCH -->
+    <!-- DATA SOURCES -->
     <div class="sb-block">
-        <div class="sb-title">🔍 Search City</div>
-        <div class="search-wrap">
-            <input class="search-input" id="searchInput" placeholder="Type city or district name..." oninput="searchCity(this.value)">
-            <span class="s-icon">🔍</span>
-        </div>
+      <div class="sb-title">📁 Data Sources</div>
+      <div class="ds-item"><span class="ds-icon">📡</span><span><strong>SRTM DEM</strong> — NASA / USGS</span></div>
+      <div class="ds-item"><span class="ds-icon">🌧</span><span><strong>Rainfall</strong> — IMD 2020–2023</span></div>
+      <div class="ds-item"><span class="ds-icon">🏞</span><span><strong>Rivers</strong> — ISRO Bhuvan</span></div>
+      <div class="ds-item"><span class="ds-icon">🛰</span><span><strong>Land Use</strong> — ISRO LULC 2023</span></div>
+      <div class="ds-item"><span class="ds-icon">🌍</span><span><strong>Live Weather</strong> — Open-Meteo API</span></div>
     </div>
 
-    <!-- 7. ALERTS FEED -->
-    <div class="sb-block">
-        <div class="sb-title">🚨 Live Flood Alerts</div>
-        <div class="feed" id="alertFeed"><div style="color:#475569;font-size:11px;text-align:center;padding:16px;">Loading alerts...</div></div>
-    </div>
+  </div>
 
-    <!-- 8. LEGEND -->
-    <div class="sb-block">
-        <div class="sb-title">📊 Risk Legend</div>
-        <div class="leg-item"><div class="leg-color" style="background:#ef4444;"></div>High Risk — Immediate attention</div>
-        <div class="leg-item"><div class="leg-color" style="background:#f59e0b;"></div>Medium Risk — Moderate probability</div>
-        <div class="leg-item"><div class="leg-color" style="background:#10b981;"></div>Low Risk — Minimal concern</div>
-    </div>
-
-    <!-- 9. METHODOLOGY -->
-    <div class="sb-block">
-        <div class="sb-title">⚙️ Methodology</div>
-        <div class="method-step">
-            <div class="step-num">1</div>
-            <div class="step-text"><strong>Data Collection</strong>SRTM DEM + IMD Rainfall + ISRO Rivers + LULC</div>
-        </div>
-        <div class="method-step">
-            <div class="step-num">2</div>
-            <div class="step-text"><strong>QGIS Analysis</strong>Reclassification on 1–5 risk scale</div>
-        </div>
-        <div class="method-step">
-            <div class="step-num">3</div>
-            <div class="step-text"><strong>Weighted Overlay</strong>Scientific weights applied</div>
-        </div>
-        <div class="method-step">
-            <div class="step-num">4</div>
-            <div class="step-text"><strong>Web Deployment</strong>GeoJSON → Leaflet.js → GitHub Pages</div>
-        </div>
-        <div style="margin-top:8px;">
-            <div class="weight-bar-row"><div class="wb-label">Rainfall</div><div class="wb-track"><div class="wb-fill" style="width:35%;background:#3b82f6;"></div></div><div class="wb-pct">35%</div></div>
-            <div class="weight-bar-row"><div class="wb-label">Elevation</div><div class="wb-track"><div class="wb-fill" style="width:30%;background:#8b5cf6;"></div></div><div class="wb-pct">30%</div></div>
-            <div class="weight-bar-row"><div class="wb-label">River</div><div class="wb-track"><div class="wb-fill" style="width:25%;background:#06b6d4;"></div></div><div class="wb-pct">25%</div></div>
-            <div class="weight-bar-row"><div class="wb-label">Land Use</div><div class="wb-track"><div class="wb-fill" style="width:10%;background:#10b981;"></div></div><div class="wb-pct">10%</div></div>
-        </div>
-    </div>
-
-    <!-- 10. DATA SOURCES -->
-    <div class="sb-block">
-        <div class="sb-title">📁 Data Sources</div>
-        <div style="font-size:10px;color:#94a3b8;line-height:1.8;">
-            📡 <strong style="color:#e2e8f0;">SRTM DEM</strong> — NASA/USGS (30m)<br>
-            🌧 <strong style="color:#e2e8f0;">Rainfall</strong> — IMD 2020-2023<br>
-            🏞 <strong style="color:#e2e8f0;">Rivers</strong> — ISRO Bhuvan<br>
-            🛰 <strong style="color:#e2e8f0;">Land Use</strong> — ISRO LULC 2023<br>
-            📊 <strong style="color:#e2e8f0;">Population</strong> — Census 2021<br>
-            🌍 <strong style="color:#e2e8f0;">Live Weather</strong> — Open-Meteo API
-        </div>
-    </div>
-
-</div>
-<!-- ═══ END SIDEBAR ═══ -->
-
-<!-- ═══ MAP ═══ -->
-<div class="map-wrap">
+  <div class="map-wrap">
     <div id="map"></div>
+    <div class="map-title-card">
+      <div class="mt-title">🌊 86 Cities Analyzed</div>
+      <div class="mt-sub">Real flood-prone area boundaries · GIS Weighted Overlay</div>
+    </div>
     <div class="map-btns">
-        <button class="map-btn active" onclick="toggleLayer('flood')" id="btnFlood">🌊 Flood Zones</button>
-        <button class="map-btn" onclick="toggleLayer('rain')" id="btnRain">🌧 Rainfall Heat</button>
-        <button class="map-btn" onclick="resetView()">🗺 Reset View</button>
+      <button class="map-btn active" onclick="toggleLayer('flood')" id="btnFlood">🌊 Flood Zones</button>
+      <button class="map-btn" onclick="toggleLayer('rain')" id="btnRain">🌧 Rainfall Heat</button>
+      <button class="map-btn" onclick="resetView()">🗺 Reset View</button>
     </div>
-</div>
+  </div>
 
 </div>
-<!-- ════════════ END BODY ════════════ -->
 
-<!-- ════════════ FOOTER ════════════ -->
 <footer class="footer">
-    <div class="footer-left">
-        Minor Project 2024-25 &nbsp;|&nbsp;
-        <span>Bhavesh Oswal</span> (AIDS) &nbsp;&amp;&nbsp;
-        <span>Wasif Kazi</span> (CSE)
-    </div>
-    <div class="footer-center">
-        <span style="color:#06b6d4;font-weight:700;">ADCET, Ashta</span> &nbsp;|&nbsp;
-        Shivaji University, Kolhapur &nbsp;|&nbsp;
-        GIS &amp; Remote Sensing — Academic 2024-25
-    </div>
-    <div class="footer-right">
-        <span style="color:#475569;">© 2025 Flood Risk Intelligence |</span>
-        <a href="Identification-of-Flood-Prone-Areas-in-India-Using-GIS-and-Remote-Sensing.pdf" target="_blank"> 📄 View PDF Report</a>
-    </div>
+  <div class="footer-text">Flood Risk Intelligence System — <strong>86 Indian Cities</strong> · GIS &amp; Remote Sensing Analysis</div>
+  <div class="footer-right"><a href="Identification-of-Flood-Prone-Areas-in-India-Using-GIS-and-Remote-Sensing.pdf" target="_blank">📄 View Full Report (PDF)</a></div>
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
